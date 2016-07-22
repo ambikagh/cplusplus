@@ -1,0 +1,29 @@
+buildtree:
+
+void BinarySearchTree::buildTree(ifstream& input) {
+    string keyWord;
+    input >> keyWord;
+    while (!input.eof()) {
+        insert(keyWord, this->root);
+        input >> keyWord;
+    }
+}
+
+bool BinarySearchTree::search(string word, TreeNode*& node) const{
+    
+    if (node != NULL) {
+        
+        if (word == node->key) { // Key found
+            return true;
+        }
+        if (word < node->key) { // Key not found, search in left subtree
+            return search(word, node->left);
+        }
+        else if (word > node->key) { // key not found, search in right subtree
+            return search(word, node->right);
+        }
+    }
+    else {
+        return false; // Tree traversal complete, key not found
+    }
+}
