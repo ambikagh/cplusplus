@@ -16,7 +16,7 @@ int main() {
     }
 
     cout << "two numbers are" << endl;
-    vector<int> ind = two_sum(nums, 20);
+    vector<int> ind = two_sum(nums, 19);
     for (vector<int>::iterator i = ind.begin(); i < ind.end(); i++) {
         cout << *i << " ";
     }
@@ -41,8 +41,8 @@ vector<int> two_sum(vector<int>& v_num, int target) {
 }
 
 */
-
-// using hash map
+/*
+// using hash map O(n) two pass
 
 vector<int> two_sum(vector<int>& v_num, int target) {
     vector<int> index;
@@ -63,4 +63,22 @@ vector<int> two_sum(vector<int>& v_num, int target) {
     if (!index.size()) index.push_back(-1);
     return index;
 }
+*/
+// using hash map O(n) one pass
+vector<int> two_sum(vector<int>& v_num, int target) {
+    vector<int> index;
+    map<int, int> n_map;
+     
 
+    for (int i = 0; i < v_num.size(); i++) {
+        n_map[v_num[i]] = i;
+        if (n_map.find(target - v_num[i]) != n_map.end()) {
+            index.push_back(i);
+            index.push_back(n_map[target - v_num[i]]);
+            return index;
+        }
+    }
+
+    if (!index.size()) index.push_back(-1);
+    return index;
+}
