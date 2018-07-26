@@ -1,0 +1,7 @@
+*.log
+*.pdb
+*.idb
+*.tlog
+*.vcxproj
+*.obj
+*.filters
